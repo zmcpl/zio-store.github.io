@@ -1,10 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Sprawdź, czy użytkownik już widział wiadomość
   if (!localStorage.getItem('infoShown')) {
-      // Pokaż wiadomość z animacją
       showInfo();
   } else {
-      // Ukryj wiadomość, jeśli była już pokazana
       document.getElementById('i-a-respons').style.display = 'none';
   }
 });
@@ -12,47 +9,38 @@ document.addEventListener('DOMContentLoaded', function () {
 function showInfo() {
   const infoDiv = document.getElementById('i-a-respons');
 
-  // Ustaw początkową pozycję poza ekranem (100%)
   infoDiv.style.transform = 'translateX(100%)';
   infoDiv.style.display = 'block';
 
-  // Animacja przesunięcia do pozycji 0%
   setTimeout(() => {
       infoDiv.style.transition = 'transform 500ms ease-in-out';
       infoDiv.style.transform = 'translateX(0%)';
-  }, 10); // Małe opóźnienie, aby przeglądarka mogła zarejestrować zmianę
+  }, 10);
 }
 
 function confirmInf() {
-  // Zapisz stan, że wiadomość została pokazana
   localStorage.setItem('infoShown', 'true');
 
-  // Ukryj wiadomość
   document.getElementById('i-a-respons').style.display = 'none';
 }
 
 
 
-// Funkcja do wysyłania opinii
 function wyslijOpinie() {
-  // Pobierz wartości z formularza
   const nick = document.getElementById('nick').value;
   const ocena = document.getElementById('ocena').value;
   const notka = document.getElementById('notka').value;
 
-  // Sprawdź, czy wszystkie pola są wypełnione
   if (!nick || !ocena || !notka) {
       alert('Proszę wypełnić wszystkie pola!');
       return;
   }
 
-  // Wyślij dane do webhooka Discord
   const webhookUrl = 'https://discord.com/api/webhooks/1207006608148795402/za7NVTnJFkpwW-BmOelM3DXzfoxq1GvAIWmNoZp0RT97A-Ac-hnRd8mCgcR83KCt9tSY';
 
-  // Tworzenie embeda
   const embed = {
       title: "📝 Nowa opinia!",
-      color: 0xFFA500, // Kolor pomarańczowy (możesz zmienić na inny)
+      color: 0xFFA500,
       fields: [
           {
               name: "👤 Nick",
@@ -69,15 +57,15 @@ function wyslijOpinie() {
               value: notka
           }
       ],
-      timestamp: new Date().toISOString(), // Dodaje znacznik czasu
+      timestamp: new Date().toISOString(),
       footer: {
           text: "System opinii"
       }
   };
 
   const message = {
-      content: "📨 Nowa opinia została wysłana!", // Wiadomość nad embedem
-      embeds: [embed] // Dodaj embed do wiadomości
+      content: "📨 Nowa opinia została wysłana!",
+      embeds: [embed]
   };
 
   fetch(webhookUrl, {
@@ -105,20 +93,20 @@ function wyslijOpinie() {
 
 // Funkcja do czyszczenia pól formularza
 function wyczyscFormularz() {
-  document.getElementById('nick').value = ''; // Czyści pole Nick
-  document.getElementById('ocena').value = ''; // Ustawia select na domyślną opcję
-  document.getElementById('notka').value = ''; // Czyści pole Notka
+  document.getElementById('nick').value = '';
+  document.getElementById('ocena').value = '';
+  document.getElementById('notka').value = '';
 }
 
 
 function noPages(event) {
-    event.preventDefault(); // Zapobiega domyślnej akcji linku (przekierowaniu)
+    event.preventDefault();
     const alertBox = document.getElementById('i-b-respons');
     const progressBar = document.getElementById('i7');
 
     // Resetujemy animację paska
     progressBar.style.animation = 'none';
-    void progressBar.offsetHeight; // Wymuszenie przeładowania stylu
+    void progressBar.offsetHeight;
     progressBar.style.animation = null;
 
     // Pokazujemy alert
@@ -137,11 +125,9 @@ function confirmInftwo() {
     const alertBox = document.getElementById('i-b-respons');
     const progressBar = document.getElementById('i7');
 
-    // Ukrywamy alert z animacją
     alertBox.style.opacity = '0';
     alertBox.style.transform = 'translateX(120%)';
 
-    // Resetujemy pasek postępu
     progressBar.style.animation = 'none';
 
     // Ukrywamy alert po zakończeniu animacji

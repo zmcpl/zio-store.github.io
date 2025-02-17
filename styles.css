@@ -196,7 +196,7 @@ main {
     height: 0.25rem;
     background-color: green;
     position: absolute;
-    animation: progressBar 6s linear forwards;
+    animation: progressBar 5s linear forwards;
 }
 
 @keyframes progressBar {

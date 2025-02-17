@@ -1,0 +1,161 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/obrazki/ZS.png">
+
+    <!-- WWW Fonts -->
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+
+    <!-- Primary Meta Tags -->
+
+        <title>Zio-store.ovh | Nowy rynek Huge do gry Pet Simulator 99 </title>
+        <meta name="title" content="Zio-store.ovh | Nowy rynek Huge do gry Pet Simulator 99 " />
+        <meta name="description" content="Kupuj najlepsze Huge pety oraz gemy. Bezpieczne transakcje, szybka realizacja i najlepsze oferty!" />
+
+    <!-- Open Graph / Facebook -->
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://zio-store.ovh/" />
+        <meta property="og:title" content="Zio-store.ovh | Nowy rynek Huge do gry Pet Simulator 99 " />
+        <meta property="og:description" content="Kupuj najlepsze Huge pety oraz gemy. Bezpieczne transakcje, szybka realizacja i najlepsze oferty!" />
+        <meta property="og:image" content="https://zio-store.ovh/ZIO-STORE.OVH.png" />
+
+    <!-- Twitter -->
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://zio-store.ovh/" />
+        <meta property="twitter:title" content="Zio-store.ovh | Nowy rynek Huge do gry Pet Simulator 99 " />
+        <meta property="twitter:description" content="Kupuj najlepsze Huge pety oraz gemy. Bezpieczne transakcje, szybka realizacja i najlepsze oferty!" />
+        <meta property="twitter:image" content="https://zio-store.ovh/ZIO-STORE.OVH.png" />
+
+    <!-- Script JavaScript Type Fetch Connect to API ps99 docs -->
+     <script src="scirpt.js"></script>
+</head>
+<body>
+    <header>
+        <div id="main-link">
+            <a href="https://zio-store.ovh/" title="Powrót na strone główną">
+                zio-store.ovh
+            </a>
+        </div>
+        <div id="market-place">
+            <a href="" onclick="noPages(event)">Rynek</a>
+        </div>
+        <div id="nav-link">
+                <div id="cart-objects">
+                    0
+                </div>
+            <img src="obrazki/wallet-solid.svg" alt="porftel" title="Twój koszyk">
+        </div>
+    </header>
+    <main>
+        <div id="text-h">
+            <h1>!!! Witaj na mojej stronie !!!</h1><br>
+            <p>
+                Może się przedstawie i co tutaj robimy.<br>
+                Jestem <b>Ziorbek</b> i przedstawiam swój market-place...
+            </p>
+        </div>
+        <div id="site-banner">
+            <img src="obrazki/ZIO-STORE.OVH.png" alt="meta add" title="meta tag">
+        </div>
+        <div id="opinions">
+            <div>
+                <h1>Opinie Sklepu</h1>
+            </div>
+            <div id="no-one">
+                Brak Opini...
+            </div>
+        </div>
+        <div id="send-op">
+            <div>
+                <h1>Wyslij swoja opinie</h1>
+            </div>
+            <div id="s1">
+                Nick:<br>
+                <input type="text" id="nick">
+            </div>
+            <div id="s2">
+                <select name="" id="ocena">
+                    <option value="">- - - WYBIERZ OCENE - - -</option>
+                    <option value="0/10">0/10 - Totalna klapa... 😭</option>
+                    <option value="1/10">1/10 - Tragedia... 🤦‍♂️</option>
+                    <option value="2/10">2/10 - Bardzo słabo... 🙈</option>
+                    <option value="3/10">3/10 - Kiepsko... 😕</option>
+                    <option value="4/10">4/10 - Może być gorzej... 😐</option>
+                    <option value="5/10">5/10 - Takie sobie... 🤷‍♂️</option>
+                    <option value="6/10">6/10 - Przeciętnie... 😐</option>
+                    <option value="7/10">7/10 - Nieźle... 🙂</option>
+                    <option value="8/10">8/10 - Dobrze! 👍</option>
+                    <option value="9/10">9/10 - Bardzo dobrze! 😃</option>
+                    <option value="10/10">10/10 - Perfekcyjnie! 🎉</option>
+                </select>
+            </div>
+            <div id="s3">
+                Notka do opinii:<br>
+                <textarea id="notka" cols="40" rows="10"></textarea>
+            </div>
+            <div id="s4">
+                <button type="button" id="wyslij" onclick="wyslijOpinie()">WYŚLIJ OPINIĘ</button>
+            </div>
+        </div>
+
+        <!-- ALERTS -->
+
+        <!-- Alert - brak respornywności strony -->
+        <div id="i-a-respons">
+            <div id="i1">
+                <img src="/obrazki/triangle-exclamation-solid.svg" alt="">
+                <h1>INFORMACJA !!!</h1>
+            </div>
+            <div id="i2">
+                <p>Troche smutno mi to informować ale <br>
+                Strone tworze sam i mi troche zajmie stworzenie<br>
+                responsywności na tablety/telefony S/M/L<br>
+            Musicie poczekać 😢</p>
+            </div>
+            <div id="i3">
+                <button onclick="confirmInf()">OK</button>
+            </div>
+        </div>
+
+        <!-- Alert - Brak Marketplace Pages -->
+
+        <div id="i-b-respons">
+            <div id="i7">
+            </div>
+            <div id="i4">
+                <img src="/obrazki/triangle-exclamation-solid.svg" alt="">
+                <h1>INFORMACJA !!!</h1>
+            </div>
+            <div id="i5">
+                <p>Jak narazie jest strona główna...<br>
+                Trzeba czekać na aktualizacje...<br>
+                Zapraszam na <a href="#" title="zio-store.ovh | Official discord">Discorda</a>.<br>
+                Tam dostaniecie notke o aktualizacji<br>
+                Strony... Czekajcie z niecierpliwoscia<br>
+                ...
+                </p>
+            </div>
+            <div id="i6">
+                <button onclick="confirmInftwo()">OK</button>
+            </div>
+        </div>
+
+        <!-- KONIEC -->
+    </main>
+    <footer>
+        <div>
+            <a href="https://zio-store.ovh/">zio-store.ovh</a>
+        </div>
+        <div><p>© 2025 <a href="https://www.twitch.tv/ziorbek">Ziorbek</a></p></div>
+    </footer>
+</body>
+<html>
+
+</html>

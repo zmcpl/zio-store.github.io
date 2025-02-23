@@ -36,7 +36,7 @@ function wyslijOpinie() {
       return;
   }
 
-  const webhookUrl = 'https://discord.com/api/webhooks/1207006608148795402/za7NVTnJFkpwW-BmOelM3DXzfoxq1GvAIWmNoZp0RT97A-Ac-hnRd8mCgcR83KCt9tSY';
+  const webhookUrl = 'xxx';
 
   const embed = {
       title: "📝 Nowa opinia!",

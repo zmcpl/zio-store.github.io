@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symulator inwestycji w złoto (PLN)</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="coins-solid-full.svg">
+
+    <meta name="title" content="XAU/PLN | Giełda Simulator by Ziorbek">
+    <meta name="description" content="Symulator inwestycji XAU/PLN — środowisko demonstracyjne na FAKE pieniądze. Narzędzie edukacyjne do nauki kupna/sprzedaży złota, śledzenia wykresów i testowania strategii bez ryzyka finansowego.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="XAU/PLN | Giełda Simulator by Ziorbek">
+    <meta property="og:description" content="Symulator inwestycji XAU/PLN — środowisko demonstracyjne na FAKE pieniądze. Narzędzie edukacyjne do nauki kupna/sprzedaży złota, śledzenia wykresów i testowania strategii bez ryzyka finansowego.">
+    <meta property="og:url" content="https://zio-store.ovh/">
+    <meta property="og:image" content="https://zio-store.ovh/preview.png">
+    <meta property="og:locale" content="pl_PL">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="XAU/PLN | Giełda Simulator by Ziorbek">
+    <meta name="twitter:description" content="Symulator inwestycji XAU/PLN — środowisko demonstracyjne na FAKE pieniądze. Narzędzie edukacyjne do nauki kupna/sprzedaży złota, śledzenia wykresów i testowania strategii bez ryzyka finansowego.">
+    <meta name="twitter:image" content="https://zio-store.ovh/preview.png">
+
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://zio-store.ovh/">
+
+</head>
+<body>
+    <div class="container">
+
+        <div class="header-bar">
+            <div class="project-name">💰 Symulator Inwestycji</div>
+            <div class="balance">Saldo: <span id="balance">10000.00</span> PLN</div>
+        </div>
+
+        <div class="main-content-grid">
+
+            <section class="market card">
+                <h2>Kurs AUX PLN/g</h2>
+                <div class="price-wrapper">
+                    <div id="price">Wczytywanie...</div>
+                </div>
+                <div id="update-time">Ostatnia aktualizacja: --:--:--</div>
+                
+                <div class="chart-container">
+                    <canvas id="chart"></canvas>
+                </div>
+            </section>
+
+            <section class="actions card">
+                <h2>Twoje Inwestycje</h2>
+
+                <div class="buy-section">
+                    <input type="number" id="amount" placeholder="Kwota inwestycji (PLN)" min="1" step="1">
+                    <button id="buy">Kup</button>
+                </div>
+
+                <h3>Historia transakcji</h3>
+                <table id="history">
+                    <thead>
+                        <tr>
+                            <th>Typ</th>
+                            <th>Kwota (PLN)</th>
+                            <th>Kurs PLN/g</th>
+                            <th>Ilość (g)</th>
+                            <th>Zysk/Strata</th>
+                            <th>Godzina</th>
+                            <th>Akcja</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </div>
+        
+        <div class="footer-bar">
+            Made by <a href="https://kick.com/ziorbek">Ziorbek</a>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

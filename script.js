@@ -16,11 +16,26 @@ const GRAM_PER_OUNCE = 31.1035;
 // Pobranie kursu USD/PLN
 async function fetchUsdPln() {
   try {
-    const res = await fetch("https://api.exchangerate.host/latest?base=USD&symbols=PLN");
-    const data = await res.json();
-    return data.rates.PLN || 3.63;
+    const res = await fetch("https://api.nbp.pl/api/exchangerates/rates/a/usd/?format=xml");
+    const text = await res.text();
+
+    // Parser XML → JS
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, "text/xml");
+
+    // Pobranie wartości z tagu <Mid>
+    const rate = xml.querySelector("Mid");
+    if (rate) {
+      const value = parseFloat(rate.textContent);
+      console.log("Kurs USD/PLN (NBP):", value);
+      return value;
+    }
+
+    // fallback w razie błędu
+    return 3.63;
+
   } catch (err) {
-    console.error("Błąd pobrania kursu USD/PLN:", err);
+    console.error("Błąd pobrania kursu USD/PLN (NBP):", err);
     return 3.63;
   }
 }
@@ -237,3 +252,4 @@ function start() {
 }
 
 start();
+

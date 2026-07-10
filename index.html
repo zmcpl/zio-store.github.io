@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Symulator inwestycji w złoto (PLN)</title>
+    <meta name="theme-color" content="#0a0907">
+    <title>XAU/PLN — Symulator Inwestycji w Złoto | Ziorbek</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="coins-solid-full.svg">
 
     <meta name="title" content="XAU/PLN | Giełda Simulator by Ziorbek">
     <meta name="description" content="Symulator inwestycji XAU/PLN — środowisko demonstracyjne na FAKE pieniądze. Narzędzie edukacyjne do nauki kupna/sprzedaży złota, śledzenia wykresów i testowania strategii bez ryzyka finansowego.">
+    <meta name="keywords" content="symulator złota, XAU PLN, inwestycje w złoto, gra giełdowa, symulator inwestycji, kurs złota na żywo">
+    <meta name="author" content="Ziorbek">
+    <link rel="canonical" href="https://zio-store.ovh/">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="XAU/PLN | Giełda Simulator by Ziorbek">
@@ -25,63 +32,157 @@
     <meta name="twitter:image" content="https://zio-store.ovh/preview.png">
 
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://zio-store.ovh/">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Symulator Inwestycji w Złoto XAU/PLN",
+      "url": "https://zio-store.ovh/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "description": "Symulator inwestycji w złoto oparty o żywy kurs XAU/PLN, działający na wirtualnych środkach — bez ryzyka finansowego.",
+      "author": { "@type": "Person", "name": "Ziorbek" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "PLN" }
+    }
+    </script>
 </head>
 <body>
-    <div class="container">
 
-        <div class="header-bar">
-            <div class="project-name">💰 Symulator Inwestycji</div>
-            <div class="balance">Saldo: <span id="balance">10000.00</span> PLN</div>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+
+    <header class="site-header">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="11" width="26" height="14" rx="1.5" fill="currentColor"/>
+                    <rect x="3" y="11" width="26" height="14" rx="1.5" stroke="#0a0907" stroke-opacity="0.25"/>
+                    <ellipse cx="16" cy="11" rx="13" ry="3.4" fill="currentColor"/>
+                    <ellipse cx="16" cy="11" rx="13" ry="3.4" stroke="#0a0907" stroke-opacity="0.2"/>
+                    <ellipse cx="16" cy="18" rx="9.5" ry="2.4" fill="#0a0907" fill-opacity="0.18"/>
+                </svg>
+            </span>
+            <div class="brand-text">
+                <span class="brand-name">Symulator Złota</span>
+                <span class="brand-pair">XAU<span class="slash">/</span>PLN</span>
+            </div>
         </div>
 
-        <div class="main-content-grid">
+        <div class="live-status" role="status">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span>Kurs na żywo</span>
+        </div>
 
-            <section class="market card">
-                <h2>Kurs AUX PLN/g</h2>
+        <div class="balance-chip">
+            <span class="balance-label">Saldo</span>
+            <span class="balance-value"><span id="balance">10000.00</span> PLN</span>
+        </div>
+    </header>
+
+    <div class="ticker-tape" aria-hidden="true">
+        <div class="ticker-track" id="ticker-track">
+            <span class="ticker-placeholder">Ładowanie danych rynkowych…</span>
+        </div>
+    </div>
+
+    <main id="main" class="container">
+
+        <h1 class="visually-hidden">Symulator inwestycji w złoto — kurs XAU/PLN na żywo</h1>
+
+        <section class="hero card" aria-labelledby="price-heading">
+            <div class="hero-top">
+                <h2 id="price-heading">Kurs złota (999.9)</h2>
+                <span class="unit-tag">PLN za gram</span>
+            </div>
+
+            <div class="price-board">
                 <div class="price-wrapper">
-                    <div id="price">Wczytywanie...</div>
+                    <div id="price" class="price-display">— · — —</div>
                 </div>
-                <div id="update-time">Ostatnia aktualizacja: --:--:--</div>
-                
-                <div class="chart-container">
-                    <canvas id="chart"></canvas>
+                <div class="price-meta">
+                    <span id="price-change" class="price-change">bez zmian</span>
+                    <span id="update-time">Ostatnia aktualizacja: --:--:--</span>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="chart" role="img" aria-label="Wykres kursu złota z ostatnich odczytów"></canvas>
+            </div>
+        </section>
+
+        <section class="side-column">
+
+            <section class="stats card" aria-label="Podsumowanie portfela">
+                <div class="stat">
+                    <span class="stat-label">Wartość portfela</span>
+                    <span class="stat-value" id="stat-portfolio">0.00 PLN</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Zainwestowano</span>
+                    <span class="stat-value" id="stat-invested">0.00 PLN</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Zysk / Strata</span>
+                    <span class="stat-value" id="stat-pl">0.00 PLN</span>
                 </div>
             </section>
 
-            <section class="actions card">
-                <h2>Twoje Inwestycje</h2>
+            <section class="actions card" aria-labelledby="buy-heading">
+                <h2 id="buy-heading">Kup złoto</h2>
 
-                <div class="buy-section">
-                    <input type="number" id="amount" placeholder="Kwota inwestycji (PLN)" min="1" step="1">
-                    <button id="buy">Kup</button>
+                <form class="buy-section" id="buy-form">
+                    <label class="visually-hidden" for="amount">Kwota inwestycji w PLN</label>
+                    <div class="input-wrap">
+                        <input type="number" id="amount" placeholder="Kwota w PLN" min="1" step="1" inputmode="decimal">
+                        <span class="input-suffix">PLN</span>
+                    </div>
+                    <button type="submit" id="buy">Kup</button>
+                </form>
+
+                <div class="quick-amounts" role="group" aria-label="Szybki wybór kwoty">
+                    <button type="button" class="quick-btn" data-pct="0.25">25%</button>
+                    <button type="button" class="quick-btn" data-pct="0.5">50%</button>
+                    <button type="button" class="quick-btn" data-pct="0.75">75%</button>
+                    <button type="button" class="quick-btn" data-pct="1">Max</button>
                 </div>
+            </section>
 
-                <h3>Historia transakcji</h3>
+        </section>
+
+        <section class="history-section card" aria-labelledby="history-heading">
+            <div class="history-head">
+                <h2 id="history-heading">Historia transakcji</h2>
+                <span class="history-count" id="history-count">0 pozycji</span>
+            </div>
+
+            <div class="table-scroll">
                 <table id="history">
                     <thead>
                         <tr>
                             <th>Typ</th>
-                            <th>Kwota (PLN)</th>
-                            <th>Kurs PLN/g</th>
-                            <th>Ilość (g)</th>
-                            <th>Zysk/Strata</th>
+                            <th>Kwota</th>
+                            <th>Kurs</th>
+                            <th>Ilość</th>
+                            <th>Zysk / Strata</th>
                             <th>Godzina</th>
-                            <th>Akcja</th>
+                            <th><span class="visually-hidden">Akcja</span></th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
-            </section>
-        </div>
-        
-        <div class="footer-bar">
-            Made by <a href="https://kick.com/ziorbek">Ziorbek</a>
-        </div>
+                <p class="empty-state" id="empty-state">Brak transakcji. Kup swój pierwszy gram złota, aby zobaczyć go tutaj.</p>
+            </div>
+        </section>
 
-    </div>
+    </main>
 
-    <script src="script.js"></script>
+    <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+    <footer class="site-footer">
+        <p>Środowisko demonstracyjne — wirtualne środki, brak realnego ryzyka finansowego.</p>
+        <p>Made by <a href="https://kick.com/ziorbek" rel="noopener">Ziorbek</a></p>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
